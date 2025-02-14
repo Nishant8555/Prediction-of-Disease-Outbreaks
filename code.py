@@ -3,9 +3,8 @@ import pickle
 import pandas as pd
 
 # Load the pre-trained model (diabetes_model.pkl)
-diabetes_model = pickle.load(open('diabetes_model.pkl', 'rb'))  # Adjust path if needed
+diabetes_model = pickle.load(open('diabetes_model.pkl', 'rb'))  
 
-# Collect user input
 try:
     Pregnancies = float(input("Enter the number of pregnancies: "))
     Glucose = float(input("Enter the glucose level: "))
@@ -16,13 +15,10 @@ try:
     DiabetesPedigreeFunction = float(input("Enter the diabetes pedigree function value: "))
     Age = float(input("Enter the age of the person: "))
 
-    # Prepare the input data for prediction
     user_input = [Pregnancies, Glucose, Bloodpressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]
 
-    # Make the prediction
     diab_prediction = diabetes_model.predict([user_input])
 
-    # Output the result
     if diab_prediction[0] == 1:
         print("The person is diabetic.")
     else:
